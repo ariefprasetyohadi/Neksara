@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Neksara")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ff50bbb82299d4061cf21ff8d459ee0da4573f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ceb3c4792183eb2ccebe109862188d4fc30b7f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Neksara")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Neksara")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

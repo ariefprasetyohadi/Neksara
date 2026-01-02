@@ -1,0 +1,26 @@
+@model Neksara.Models.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<h2>Edit Category</h2>
+
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="CategoriesId" />
+
+    <div>
+        <label>Category Name</label><br />
+        <input asp-for="CategoryName" />
+    </div>
+
+    <div>
+        <label>Description</label><br />
+        <textarea asp-for="Description"></textarea>
+    </div>
+
+    <br />
+
+    <button type="submit">Update</button>
+    <a href="/admin/categories">Back</a>
+</form>

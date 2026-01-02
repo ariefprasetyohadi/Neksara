@@ -1,0 +1,15 @@
+@model Category
+
+<h3>Edit Kategori</h3>
+
+<form asp-action="EditCategory" method="post">
+    <input type="hidden" asp-for="CategoriesId" />
+
+    <div class="mb-3">
+        <label class="form-label">Nama Kategori</label>
+        <input asp-for="CategoryName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a asp-action="Categories" class="btn btn-secondary">Batal</a>
+</form>

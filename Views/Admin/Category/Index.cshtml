@@ -1,0 +1,23 @@
+<h2>Manage Categories</h2>
+
+<input type="text" placeholder="Search category..." />
+
+<table>
+<tr>
+    <th>Category</th>
+    <th>Total Topic</th>
+    <th>Action</th>
+</tr>
+
+@foreach (var c in Model)
+{
+<tr>
+    <td>@c.CategoryName</td>
+    <td>@c.Topics.Count</td>
+    <td>
+        <a href="/admin/categories/edit/@c.CategoriesId">Edit</a>
+        <a href="/admin/categories/delete/@c.CategoriesId">Delete</a>
+    </td>
+</tr>
+}
+</table>

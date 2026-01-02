@@ -1,0 +1,24 @@
+@model Neksara.Models.Category
+
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<h2>Tambah Category</h2>
+
+<form method="post" asp-action="Create">
+    <div>
+        <label>Category Name</label><br />
+        <input asp-for="CategoryName" />
+    </div>
+
+    <div>
+        <label>Description</label><br />
+        <textarea asp-for="Description"></textarea>
+    </div>
+
+    <br />
+
+    <button type="submit">Save</button>
+    <a href="/admin/categories">Cancel</a>
+</form>

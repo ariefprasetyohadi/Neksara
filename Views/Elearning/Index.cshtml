@@ -1,0 +1,17 @@
+@using Neksara.Models
+@model IEnumerable<Category>
+
+<h2>Category Pilihan</h2>
+
+<input type="text" placeholder="Search category..." />
+
+<div class="row">
+    @foreach (var c in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <div class="card p-2">
+                <h5>@c.CategoryName</h5>
+            </div>
+        </div>
+    }
+</div>

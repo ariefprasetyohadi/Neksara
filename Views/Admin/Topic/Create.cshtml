@@ -1,0 +1,40 @@
+@model Neksara.Models.Topic
+@{
+    ViewData["Title"] = "Create Topic";
+}
+
+<h2>Tambah Topic</h2>
+
+<form method="post" asp-action="Create">
+    <div>
+        <label>Category</label><br />
+        <select asp-for="IdCategory" asp-items="ViewBag.Categories">
+            <option value="">-- Pilih Category --</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Topic Name</label><br />
+        <input asp-for="TopicName" />
+    </div>
+
+    <div>
+        <label>Thumbnail / Picture URL</label><br />
+        <input asp-for="PictTopic" />
+    </div>
+
+    <div>
+        <label>Content (Article)</label><br />
+        <textarea asp-for="Body" rows="6"></textarea>
+    </div>
+
+    <div>
+        <label>YouTube Video URL</label><br />
+        <input asp-for="VideoUrl" placeholder="https://youtube.com/watch?v=..." />
+    </div>
+
+    <br />
+
+    <button type="submit">Publish</button>
+    <a href="/admin/topics">Cancel</a>
+</form>

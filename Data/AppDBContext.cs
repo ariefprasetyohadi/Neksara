@@ -11,7 +11,6 @@ namespace Neksara.Data
         {
         }
 
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Topic> Topics { get; set; }
@@ -23,25 +22,6 @@ namespace Neksara.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // ===== ADMIN =====
-            modelBuilder.Entity<Admin>(entity =>
-            {
-                entity.ToTable("Admin");
-
-                entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.Name)
-                      .IsRequired()
-                      .HasMaxLength(100);
-
-                entity.Property(e => e.Email)
-                      .IsRequired()
-                      .HasMaxLength(100);
-
-                entity.Property(e => e.CreatedAt)
-                      .HasDefaultValueSql("GETDATE()");
-            });
-
             // ===== USERS =====
             modelBuilder.Entity<User>(entity =>
             {
@@ -50,6 +30,10 @@ namespace Neksara.Data
                 entity.HasKey(e => e.UserId);
 
                 entity.Property(e => e.Username)
+                      .IsRequired()
+                      .HasMaxLength(100);
+
+                entity.Property(e => e.Password)
                       .IsRequired()
                       .HasMaxLength(100);
 
@@ -110,6 +94,9 @@ namespace Neksara.Data
 
                 entity.Property(e => e.IsDeleted)
                       .HasDefaultValue(false);
+
+                entity.Property(e => e.CreatedAt)
+                      .HasDefaultValueSql("GETDATE()");
 
                 entity.HasOne(e => e.Category)
                       .WithMany(c => c.Topics)

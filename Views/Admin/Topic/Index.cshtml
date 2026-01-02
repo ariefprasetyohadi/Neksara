@@ -1,0 +1,25 @@
+<h2>Manage Topics</h2>
+
+<input type="text" placeholder="Search topic..." />
+
+<table>
+<tr>
+    <th>Topic</th>
+    <th>Category</th>
+    <th>Views</th>
+    <th>Action</th>
+</tr>
+
+@foreach (var t in Model)
+{
+<tr>
+    <td>@t.TopicName</td>
+    <td>@t.Category.CategoryName</td>
+    <td>@t.ViewCount</td>
+    <td>
+        <a href="/admin/topics/edit/@t.TopicId">Edit</a>
+        <a href="/admin/topics/delete/@t.TopicId">Delete</a>
+    </td>
+</tr>
+}
+</table>

@@ -1,0 +1,52 @@
+@model List<Category>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<form method="get" class="mb-3 d-flex">
+    <input name="search" class="form-control me-2"
+           placeholder="Cari Kategori..."
+           value="@ViewBag.CurrentSearch" />
+    <button class="btn btn-primary">Cari</button>
+    <a href="/Admin/CreateCategory" class="btn btn-dark">
+        + Tambah Kategori
+    </a>
+</form>
+<h4>Daftar Kategori</h4>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.CategoriesId</td>
+                <td>@c.CategoryName</td>
+                <td>@c.Description</td>
+                <td>
+                    <a href="/Admin/EditCategory/@c.CategoriesId" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/Admin/DeleteCategory/@c.CategoriesId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link"
+                   href="?page=@i&search=@ViewBag.Search">
+                    @i
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

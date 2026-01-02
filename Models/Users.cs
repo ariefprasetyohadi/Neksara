@@ -10,6 +10,8 @@ namespace Neksara.Models
         [Required]
         public string Username { get; set; } = null!;
 
+        public string Password { get; set; } = null!;
+
         public string? PhotoUrl { get; set; }
 
         // Admin / User

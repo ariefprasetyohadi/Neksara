@@ -1,0 +1,55 @@
+@model List<Topic>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<form method="get" class="mb-3 d-flex">
+    <input name="search" class="form-control me-2"
+           placeholder="Cari Topik..."
+           value="@ViewBag.CurrentSearch" />
+    <button class="btn btn-primary">Cari</button>
+    <a href="/Admin/CreateTopic" class="btn btn-success ms-2">
+        + Tambah Topik
+    </a>
+</form>
+<h3>Daftar Topik</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Topik Name</th>
+            <th>Kategori</th>
+            <th>Views</th>
+            <th width="160">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var t in Model)
+    {
+        <tr>
+            <td>@t.TopicId</td>
+            <td>@t.TopicName</td>
+            <td>@t.Category?.CategoriesId</td>
+            <td>@t.Category?.CategoryName</td>
+            <td>@t.ViewCount</td>
+            <td>
+                <a href="/Admin/EditTopic/@t.TopicId" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/Admin/DeleteTopic/@t.TopicId" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link"
+                   href="?page=@i&search=@ViewBag.Search">
+                    @i
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

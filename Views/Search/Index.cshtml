@@ -1,0 +1,77 @@
+@model Neksara.ViewModels.SearchViewModel
+
+@{
+    ViewData["Title"] = "Hasil Pencarian";
+}
+
+<div class="container mt-4">
+
+    <h3 class="mb-3">
+        Hasil pencarian untuk: 
+        <span class="text-primary">"@Model.Keyword"</span>
+    </h3>
+
+    <!-- CATEGORY RESULT -->
+    @if (Model.Categories != null && Model.Categories.Any())
+    {
+        <h5 class="mt-4">📁 Categories</h5>
+        <ul class="list-group mb-4">
+            @foreach (var category in Model.Categories)
+            {
+                <li class="list-group-item">
+                    <strong>@category.CategoryName</strong>
+                    <p class="mb-1 text-muted">@category.Description</p>
+
+                    <a asp-controller="Learning"
+                       asp-action="Category"
+                       asp-route-id="@category.CategoriesId"
+                       class="btn btn-sm btn-outline-primary">
+                        Lihat Materi
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+
+    <!-- TOPIC RESULT -->
+    @if (Model.Topics != null && Model.Topics.Any())
+    {
+        <h5 class="mt-4">📘 Topics</h5>
+        <ul class="list-group">
+            @foreach (var topic in Model.Topics)
+            {
+                <li class="list-group-item">
+                    <strong>@topic.TopicName</strong>
+                    <p class="mb-1 text-muted">
+                        @topic.Category?.CategoryName
+                    </p>
+
+                    <span class="badge bg-secondary">
+                        👀 @topic.ViewCount views
+                    </span>
+
+                    <div class="mt-2">
+                        <a asp-controller="Topic"
+                           asp-action="Detail"
+                           asp-route-id="@topic.TopicId"
+                           class="btn btn-sm btn-primary">
+                            Buka Materi
+                        </a>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+
+    <!-- EMPTY RESULT -->
+    @if (
+        (Model.Categories == null || !Model.Categories.Any()) &&
+        (Model.Topics == null || !Model.Topics.Any())
+    )
+    {
+        <div class="alert alert-warning mt-4">
+            😅 Yah, tidak ada hasil yang cocok dengan keyword tersebut.
+        </div>
+    }
+
+</div>

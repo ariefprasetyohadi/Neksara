@@ -1,0 +1,29 @@
+<h2>Feedback Moderation</h2>
+
+<table>
+<tr>
+    <th>User</th>
+    <th>Target</th>
+    <th>Rating</th>
+    <th>Comment</th>
+    <th>Action</th>
+</tr>
+
+@foreach (var f in Model)
+{
+<tr>
+    <td>@f.User.Username</td>
+    <td>@f.TargetType</td>
+    <td>@f.Rating</td>
+    <td>@f.Description</td>
+    <td>
+        <form method="post" action="/admin/feedbacks/approve/@f.FeedbacksId">
+            <button>Approve</button>
+        </form>
+        <form method="post" action="/admin/feedbacks/reject/@f.FeedbacksId">
+            <button>Reject</button>
+        </form>
+    </td>
+</tr>
+}
+</table>

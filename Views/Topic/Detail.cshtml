@@ -1,0 +1,15 @@
+<h2>@Model.TopicName</h2>
+<p>Kategori: @Model.Category.CategoryName</p>
+
+@if (!string.IsNullOrEmpty(Model.VideoUrl))
+{
+    <iframe width="560" height="315"
+        src="@Model.VideoUrl.Replace("watch?v=", "embed/")">
+    </iframe>
+}
+
+<article>
+    @Html.Raw(Model.Body)
+</article>
+
+<p>Total Views: @Model.ViewCount</p>

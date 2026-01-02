@@ -1,0 +1,15 @@
+<h2>Admin Login</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post">
+    <div class="mb-3">
+        <label>Username</label>
+        <input name="username" class="form-control" />
+    </div>
+
+    <button class="btn btn-dark">Login</button>
+</form>

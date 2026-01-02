@@ -1,0 +1,41 @@
+@model Neksara.Models.Topic
+@{
+    ViewData["Title"] = "Edit Topic";
+}
+
+<h2>Edit Topic</h2>
+
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="TopicId" />
+
+    <div>
+        <label>Category</label><br />
+        <select asp-for="IdCategory" asp-items="ViewBag.Categories">
+        </select>
+    </div>
+
+    <div>
+        <label>Topic Name</label><br />
+        <input asp-for="TopicName" />
+    </div>
+
+    <div>
+        <label>Thumbnail / Picture URL</label><br />
+        <input asp-for="PictTopic" />
+    </div>
+
+    <div>
+        <label>Content (Article)</label><br />
+        <textarea asp-for="Body" rows="6"></textarea>
+    </div>
+
+    <div>
+        <label>YouTube Video URL</label><br />
+        <input asp-for="VideoUrl" />
+    </div>
+
+    <br />
+
+    <button type="submit">Update</button>
+    <a href="/admin/topics">Back</a>
+</form>

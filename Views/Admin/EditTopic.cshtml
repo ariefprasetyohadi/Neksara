@@ -1,0 +1,55 @@
+@model Neksara.Models.Topic
+@{
+    ViewData["Title"] = "Edit Topik";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="mb-4">✏️ Edit Topik</h3>
+
+<form asp-controller="Admin" asp-action="EditTopic" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="TopicId" />
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Kategori</label>
+        <select asp-for="IdCategory" class="form-select">
+            <option value="">-- Pilih Kategori --</option>
+            @foreach (var c in ViewBag.Categories)
+            {
+                <option value="@c.CategoriesId"
+                        selected="@(c.CategoriesId == Model.IdCategory)">
+                    @c.CategoryName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="IdCategory" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Nama Topik</label>
+        <input asp-for="TopicName" class="form-control" />
+        <span asp-validation-for="TopicName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Isi Materi</label>
+        <textarea asp-for="Body" rows="5" class="form-control"></textarea>
+        <span asp-validation-for="Body" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-bold">Video URL</label>
+        <input asp-for="VideoUrl" class="form-control" />
+        <span asp-validation-for="VideoUrl" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-warning">
+            💾 Update
+        </button>
+        <a href="/Admin/Topics" class="btn btn-secondary">
+            ❌ Batal
+        </a>
+    </div>
+</form>

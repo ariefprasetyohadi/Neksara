@@ -22,11 +22,12 @@ namespace Neksara.Models
         public bool IsDeleted { get; set; } = false;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdateAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         // FK
         [ForeignKey("Category")]
         public int IdCategory { get; set; }
+
         public Category? Category { get; set; }
 
         // Navigation

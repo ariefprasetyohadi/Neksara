@@ -1,0 +1,22 @@
+<h2>Archived Topics</h2>
+
+<table>
+<tr>
+    <th>Topic</th>
+    <th>Category</th>
+    <th>Action</th>
+</tr>
+
+@foreach (var a in Model)
+{
+<tr>
+    <td>@a.TopicName</td>
+    <td>@a.CategoryName</td>
+    <td>
+        <form method="post" action="/admin/archive/restore/@a.Id">
+            <button>Restore</button>
+        </form>
+    </td>
+</tr>
+}
+</table>

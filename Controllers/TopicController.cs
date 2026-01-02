@@ -96,7 +96,7 @@ namespace Neksara.Web.Controllers
             existingTopic.VideoUrl = topic.VideoUrl;
             existingTopic.PictTopic = topic.PictTopic;
             existingTopic.IdCategory = topic.IdCategory;
-            existingTopic.UpdateAt = DateTime.Now;
+            existingTopic.UpdatedAt = DateTime.Now;
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -125,7 +125,7 @@ namespace Neksara.Web.Controllers
                 return NotFound();
 
             topic.IsDeleted = true;
-            topic.UpdateAt = DateTime.Now;
+            topic.UpdatedAt = DateTime.Now;
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
